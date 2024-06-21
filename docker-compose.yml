@@ -1,0 +1,53 @@
+services:
+  ollama:
+    container_name: ollama
+    image: ollama/ollama
+    restart: always
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - private
+  backend:
+    container_name: backend
+    image: backend
+    build: backend
+    restart: always
+    env_file:
+      - ./backend/.env
+    networks:
+      - public
+      - private
+    depends_on:
+      - ollama
+  frontend:
+    container_name: frontend
+    image: frontend
+    build: frontend
+    volumes:
+      - frontend_static:/opt/app/dist/:rw
+    networks:
+      - public
+    depends_on:
+      - backend
+  nginx:
+    container_name: nginx
+    image: nginx:1.27-alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - frontend_static:/opt/frontend/static/:ro
+    networks:
+      - public
+    depends_on:
+      - frontend
+volumes:
+  ollama_data:
+  frontend_static:
+networks:
+  public:
+  private:
