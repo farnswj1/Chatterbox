@@ -13,7 +13,7 @@ OLLAMA_HOST=http://ollama:11434
 ### Frontend
 In the `frontend` directory, create an `.env` file with the following configurations:
 ```
-VITE_API_URL=http://localhost
+VITE_API_URL=ws://localhost
 ```
 
 ## Running the Application
