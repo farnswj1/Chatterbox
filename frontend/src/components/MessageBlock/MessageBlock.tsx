@@ -7,7 +7,7 @@ import { ChatMessage } from 'types';
 type MessageBlockProps = ChatMessage;
 
 const MessageBlock: FC<MessageBlockProps> = ({ author, message }) => (
-  <div className="mb-4">
+  <div className="mb-8">
     <p><span className="font-bold text-xl">{author}</span>:</p>
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
