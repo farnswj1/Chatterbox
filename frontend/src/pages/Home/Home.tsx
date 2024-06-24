@@ -16,7 +16,7 @@ const Home: FC = () => {
         const { message, done } = JSON.parse(event.data) as FromMessage;
 
         if (done) {
-          const newChatLog: ChatMessage = { author: 'Ollama', message: response };
+          const newChatLog: ChatMessage = { author: 'Chatterbox', message: response };
           setChatMessages(chatMessages => [...chatMessages, newChatLog]);
           setResponse('');
           setDisabled(false);
@@ -48,7 +48,7 @@ const Home: FC = () => {
           }
           {
             response.length > 0 && (
-              <MessageBlock author="Ollama" message={response} />
+              <MessageBlock author="Chatterbox" message={response} />
             )
           }
         </div>

@@ -7,8 +7,8 @@ from config import settings
 
 
 app = FastAPI(
-    title='Ollama Tutorial',
-    description='This is the Ollama Tutorial API.',
+    title='Chatterbox',
+    description='This is the Chatterbox API.',
     contact={
         'name': 'Justin Farnsworth',
         'email': 'fjj12697@gmail.com'

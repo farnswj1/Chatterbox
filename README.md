@@ -1,5 +1,5 @@
-# Ollama Tutorial
-This is an Ollama tutorial.
+# Chatterbox
+This is a web that allows you to chat with an LLM provided by Ollama.
 
 ## Setup
 ### Backend
