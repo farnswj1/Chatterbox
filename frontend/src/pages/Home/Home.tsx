@@ -1,14 +1,15 @@
-import { FC, FormEvent, useState } from 'react';
+import { FC, FormEvent, useRef, useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 import { MessageBlock } from 'components';
 import { ChatMessage, FromMessage } from 'types';
 
-const URL = import.meta.env.VITE_API_URL + '/api/ws';
+const URL = `ws://${import.meta.env.VITE_API_HOST}/api/ws`;
 
 const Home: FC = () => {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [response, setResponse] = useState<string>('');
   const [disabled, setDisabled] = useState<boolean>(false);
+  const ref = useRef<HTMLTextAreaElement>(null);
   const { sendMessage } = useWebSocket<FromMessage>(
     URL,
     {
@@ -35,6 +36,10 @@ const Home: FC = () => {
     const newChatMessage: ChatMessage = { author: 'You', message: userMessage };
     setChatMessages(chatMessages => [...chatMessages, newChatMessage]);
     sendMessage(userMessage);
+
+    if (ref.current) {
+      ref.current.value = '';
+    }
   };
 
   return (
@@ -61,6 +66,7 @@ const Home: FC = () => {
             cols={80}
             disabled={disabled}
             required
+            ref={ref}
           />
           <div>
             <button
