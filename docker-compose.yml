@@ -3,8 +3,6 @@ services:
     container_name: ollama
     image: ollama/ollama
     restart: always
-    ports:
-      - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
     networks:
@@ -12,10 +10,10 @@ services:
   backend:
     container_name: backend
     image: backend
-    build: backend
+    build: backend_rs
     restart: always
     env_file:
-      - ./backend/.env
+      - ./backend_rs/.env
     networks:
       - public
       - private

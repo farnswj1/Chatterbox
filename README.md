@@ -3,10 +3,9 @@ This is a web that allows you to chat with an LLM provided by Ollama.
 
 ## Setup
 ### Backend
-In the `backend` directory, create an `.env` file with the following configurations:
+In the `backend_rs` directory, create an `.env` file with the following configurations:
 ```
-ALLOWED_HOSTS=localhost 127.0.0.1
-CORS_ALLOW_ORIGIN_REGEX=^https?://(localhost|127\.0\.0\.1)$
+CORS_ALLOWED_ORIGINS="http://localhost http://127.0.0.1"
 OLLAMA_HOST=http://ollama:11434
 ```
 
