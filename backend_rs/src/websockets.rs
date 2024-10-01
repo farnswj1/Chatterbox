@@ -37,7 +37,7 @@ pub async fn handle_socket(mut socket: WebSocket, ollama: Ollama, who: String) {
             let request = GenerationRequest::new(OLLAMA_MODEL.to_string(), text);
             let mut stream = ollama.generate_stream(request).await.unwrap();
 
-            // Steam the response back to the client.
+            // Stream the response back to the client.
             while let Some(response) = stream.next().await {
                 for resp in response.unwrap() {
                     let content = ClientResponse { message: resp.response, done: resp.done };
