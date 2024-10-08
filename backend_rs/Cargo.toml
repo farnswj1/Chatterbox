@@ -5,10 +5,10 @@ edition = "2021"
 
 [dependencies]
 axum = { version = "0.7.7", features = ["ws"] }
-axum-client-ip = "0.6.0"
+axum-client-ip = "0.6.1"
 dotenvy = "0.15.7"
 envy = "0.4.2"
-futures = "0.3.30"
+futures = "0.3.31"
 ollama-rs = { version = "0.2.1", features = ["stream"] }
 serde = { version = "1.0.204", features = ["derive"] }
 serde_json = "1.0.128"
